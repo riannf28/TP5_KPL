@@ -6,7 +6,9 @@ namespace tpmodul5_1302200040
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            SayaTubeVideo saya = new SayaTubeVideo("Tutorial Design By Contract - Rian Nur Fauzi");
+            saya.IncreasePlayCount(0);
+            saya.PrintVideoDetails();
         }
     }
 }
