@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Text;
 
 namespace tpmodul5_1302200040
@@ -13,6 +14,8 @@ namespace tpmodul5_1302200040
         public SayaTubeVideo(String title)
         {
             this.title = title;
+            var a = this.title.Substring(0, Math.Min(100, this.title.Length));
+            Contract.Requires(this.title != null);
             String number = "";
             Random rnd = new Random();
             id = rnd.Next(1, 100000);
@@ -23,9 +26,22 @@ namespace tpmodul5_1302200040
 
         public void IncreasePlayCount(int n)
         {
-            for (playCount = 0; playCount <= n; playCount++)
+            if (n <= 10000000)
             {
-
+                for (playCount = 0; playCount <= n; playCount++)
+                {
+                    
+                }
+                int z = 0;
+                try
+                {
+                    z = checked(n + 10);
+                }
+                catch (System.OverflowException e)
+                {
+                    Console.WriteLine("Check : " + e.ToString());
+                    Console.WriteLine("Melebihi batas input");
+                }
             }
         }
 
